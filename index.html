@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Suche</title>
+    <script>
+        function triggerSearchEvent() {
+            var event = {
+                event: "mashup100.magiccom.customExtendedSearch",
+                operation: "search",
+                params: { $search: "alex" }
+            };
+            window.parent.postMessage(event, '*');
+        }
+    </script>
+</head>
+<body>
+    <button onclick="triggerSearchEvent()">Suche</button>
+</body>
+</html>
