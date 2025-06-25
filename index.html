@@ -4,17 +4,13 @@
     <meta charset="UTF-8">
     <title>Suche</title>
     <script>
-        function triggerSearchEvent() {
-            var event = {
-                event: "mashup100.magiccom.customExtendedSearch",
-                operation: "search",
-                params: { $search: "alex" }
-            };
-            window.parent.postMessage(event, '*');
+        function openNewCnsCaseList() {
+	        var oCase = {operation: "navigation", params: {routingKey: "case", viewType: "list"}};
+	        window.parent.postMessage(oCase, '*')
         }
     </script>
 </head>
 <body>
-    <button onclick="triggerSearchEvent()">Suche</button>
+    <button onclick="openNewCnsCaseList()">Fallübersicht</button>
 </body>
 </html>
