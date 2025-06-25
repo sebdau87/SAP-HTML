@@ -8,9 +8,30 @@
 	        var oCase = {operation: "navigation", params: {routingKey: "case", viewType: "list"}};
 	        window.parent.postMessage(oCase, '*')
         }
+
+	    function searchTicketsToday() {
+            const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+
+              const message = {
+        event: "sap.fe.ui.event",
+        payload: {
+          operation: "search",
+          params: {
+            routingKey: "case", // 'case' refers to tickets
+            filters: [
+              {
+                field: "createdOn",
+                operator: "eq",
+                value: today
+              }
+            ]
+          }
+        }
+      };
     </script>
 </head>
 <body>
     <button onclick="openNewCnsCaseList()">Fallübersicht</button>
+<button onclick="searchTicketsToday()">Fälle Heute</button>
 </body>
 </html>
