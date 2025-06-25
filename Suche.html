@@ -13,9 +13,30 @@
             window.parent.postMessage(event, '*');
         }
 
+        function searchTicketsToday() {
+            const today = new Date().toISOString().split('T')[0]; // Format: YYYY-MM-DD
+
+              const message = {
+        event: "sap.fe.ui.event",
+        payload: {
+          operation: "search",
+          params: {
+            routingKey: "case", // 'case' refers to tickets
+            filters: [
+              {
+                field: "createdOn",
+                operator: "eq",
+                value: today
+              }
+            ]
+          }
+        }
+      };
+
     </script>
 </head>
 <body>
     <button onclick="triggerSearchEvent()">Suche</button>
+    <button onclick="searchTicketsToday()">Suche Heute</button>
 </body>
 </html>
